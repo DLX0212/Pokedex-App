@@ -1,0 +1,19 @@
+<div class="card shadow-sm mt-4 mx-auto" style="max-width: 600px;">
+    <div class="card-header bg-dark text-white">
+        <h4>{{#if editMode}}Editar{{else}}Crear{{/if}} Tipos</h4>
+    </div>
+    <div class="card-body">
+        <form action="{{#if editMode}}/tipos/editar/{{tipos.id}}{{else}}/tipos/crear{{/if}}" method="POST">
+            
+            <div class="mb-4">
+                <label for="nombre" class="form-label">Nombre del tipo</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" value="{{tipos.name}}" required>
+            </div>
+
+            <div class="d-flex justify-content-end gap-2">
+                <a href="/tipos" class="btn btn-secondary">Volver Atrás</a>
+                <button type="submit" class="btn btn-primary">{{#if editMode}}Guardar{{else}}Crear{{/if}} Tipo</button>
+            </div>
+        </form>
+    </div>
+</div>

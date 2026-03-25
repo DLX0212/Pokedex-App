@@ -1,0 +1,56 @@
+<div class="row mb-4">
+    <div class="col-md-4">
+        <form action="/" method="GET" class="d-flex">
+            <input type="text" name="name" class="form-control me-2" placeholder="Nombre del Pokémon" required>
+            <button class="btn btn-primary" type="submit">Buscar</button>
+        </form>
+    </div>
+
+    <div class="col-md-4">
+        <form action="/" method="GET" class="d-flex">
+            <select name="regionId" class="form-select me-2" required>
+                <option value="">Selecciona una Región...</option>
+                {{#each regiones}}
+                <option value="{{this.id}}">{{this.name}}</option>
+                {{/each}}
+            </select>
+            <button class="btn btn-primary" type="submit">Filtrar</button>
+        </form>
+    </div>
+
+    <div class="col-md-4">
+        <form action="/" method="GET" class="d-flex">
+            <select name="tipoId" class="form-select me-2" required>
+                <option value="">Selecciona un Tipo...</option>
+                {{#each tipos}}
+                <option value="{{this.id}}">{{this.name}}</option>
+                {{/each}}
+            </select>
+            <button class="btn btn-primary" type="submit">Filtrar</button>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    {{#if pokemones}}
+        {{#each pokemones}}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <img src="{{this.foto}}" class="card-img-top" alt="{{this.name}}" style="height: 250px; object-fit: contain;">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{this.name}}</h5>
+                    <p class="card-text">
+                        <strong>Región:</strong> {{this.region.name}}<br>
+                        <strong>Tipos:</strong> {{this.tipoPrimario.name}} 
+                        {{#if this.tipoSecundario}} / {{this.tipoSecundario.name}} {{/if}}
+                    </p>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    {{else}}
+        <div class="col-12 text-center">
+            <h3>No se encontraron pokemones.</h3>
+        </div>
+    {{/if}}
+</div>
